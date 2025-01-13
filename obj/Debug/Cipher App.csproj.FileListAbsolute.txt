@@ -1,0 +1,10 @@
+C:\Users\fscho\source\repos\Cipher App\bin\Debug\Cipher App.exe.config
+C:\Users\fscho\source\repos\Cipher App\bin\Debug\Cipher App.exe
+C:\Users\fscho\source\repos\Cipher App\bin\Debug\Cipher App.pdb
+C:\Users\fscho\source\repos\Cipher App\obj\Debug\Cipher App.csproj.AssemblyReference.cache
+C:\Users\fscho\source\repos\Cipher App\obj\Debug\Cipher_App.Properties.Resources.resources
+C:\Users\fscho\source\repos\Cipher App\obj\Debug\Cipher App.csproj.GenerateResource.cache
+C:\Users\fscho\source\repos\Cipher App\obj\Debug\Cipher App.csproj.CoreCompileInputs.cache
+C:\Users\fscho\source\repos\Cipher App\obj\Debug\Cipher App.exe
+C:\Users\fscho\source\repos\Cipher App\obj\Debug\Cipher App.pdb
+C:\Users\fscho\source\repos\Cipher App\obj\Debug\Cipher_App.EncryptMachineForm.resources
