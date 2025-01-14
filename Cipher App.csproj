@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlphabetSubstion.cs" />
+    <Compile Include="Atbash.cs" />
     <Compile Include="Caesar.cs" />
     <Compile Include="Cipher.cs" />
     <Compile Include="EncryptMachine.cs" />

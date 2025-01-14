@@ -40,6 +40,10 @@
             this.errorLabel = new System.Windows.Forms.Label();
             this.caesarShiftLabel = new System.Windows.Forms.Label();
             this.caesarShift = new System.Windows.Forms.NumericUpDown();
+            this.ASCKeyTextBox = new System.Windows.Forms.TextBox();
+            this.ASCLabel = new System.Windows.Forms.Label();
+            this.ASCKeyRandomizerButton = new System.Windows.Forms.Button();
+            this.ASCLetterCounter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.caesarShift)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,6 +55,8 @@
             this.encryptionTypeSelector.ItemHeight = 16;
             this.encryptionTypeSelector.Items.AddRange(new object[] {
             "Caesar Cipher",
+            "Monoalphabetic Substitution Cipher",
+            "Atbash Cipher",
             "RSA",
             "Enigma"});
             this.encryptionTypeSelector.Location = new System.Drawing.Point(340, 140);
@@ -156,7 +162,7 @@
             // caesarShiftLabel
             // 
             this.caesarShiftLabel.AutoSize = true;
-            this.caesarShiftLabel.Location = new System.Drawing.Point(515, 273);
+            this.caesarShiftLabel.Location = new System.Drawing.Point(515, 206);
             this.caesarShiftLabel.Name = "caesarShiftLabel";
             this.caesarShiftLabel.Size = new System.Drawing.Size(77, 17);
             this.caesarShiftLabel.TabIndex = 10;
@@ -165,7 +171,7 @@
             // 
             // caesarShift
             // 
-            this.caesarShift.Location = new System.Drawing.Point(518, 299);
+            this.caesarShift.Location = new System.Drawing.Point(518, 226);
             this.caesarShift.Maximum = new decimal(new int[] {
             25,
             0,
@@ -176,11 +182,58 @@
             this.caesarShift.TabIndex = 11;
             this.caesarShift.Visible = false;
             // 
+            // ASCKeyTextBox
+            // 
+            this.ASCKeyTextBox.Location = new System.Drawing.Point(518, 276);
+            this.ASCKeyTextBox.Name = "ASCKeyTextBox";
+            this.ASCKeyTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ASCKeyTextBox.Size = new System.Drawing.Size(204, 23);
+            this.ASCKeyTextBox.TabIndex = 12;
+            this.ASCKeyTextBox.Visible = false;
+            this.ASCKeyTextBox.TextChanged += new System.EventHandler(this.ASCKeyTextBox_TextChanged);
+            // 
+            // ASCLabel
+            // 
+            this.ASCLabel.AutoSize = true;
+            this.ASCLabel.Location = new System.Drawing.Point(518, 256);
+            this.ASCLabel.Name = "ASCLabel";
+            this.ASCLabel.Size = new System.Drawing.Size(73, 17);
+            this.ASCLabel.TabIndex = 13;
+            this.ASCLabel.Text = "Select key";
+            this.ASCLabel.Visible = false;
+            // 
+            // ASCKeyRandomizerButton
+            // 
+            this.ASCKeyRandomizerButton.Location = new System.Drawing.Point(729, 275);
+            this.ASCKeyRandomizerButton.Name = "ASCKeyRandomizerButton";
+            this.ASCKeyRandomizerButton.Size = new System.Drawing.Size(25, 25);
+            this.ASCKeyRandomizerButton.TabIndex = 14;
+            this.ASCKeyRandomizerButton.Text = "R";
+            this.ASCKeyRandomizerButton.UseVisualStyleBackColor = true;
+            this.ASCKeyRandomizerButton.Visible = false;
+            this.ASCKeyRandomizerButton.Click += new System.EventHandler(this.ASCKeyRandomizerButton_Click);
+            // 
+            // ASCLetterCounter
+            // 
+            this.ASCLetterCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ASCLetterCounter.AutoSize = true;
+            this.ASCLetterCounter.Location = new System.Drawing.Point(686, 256);
+            this.ASCLetterCounter.Name = "ASCLetterCounter";
+            this.ASCLetterCounter.Size = new System.Drawing.Size(36, 17);
+            this.ASCLetterCounter.TabIndex = 15;
+            this.ASCLetterCounter.Text = "0/26";
+            this.ASCLetterCounter.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.ASCLetterCounter.Visible = false;
+            // 
             // EncryptMachineForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(782, 553);
+            this.Controls.Add(this.ASCLetterCounter);
+            this.Controls.Add(this.ASCKeyRandomizerButton);
+            this.Controls.Add(this.ASCLabel);
+            this.Controls.Add(this.ASCKeyTextBox);
             this.Controls.Add(this.caesarShift);
             this.Controls.Add(this.caesarShiftLabel);
             this.Controls.Add(this.errorLabel);
@@ -217,6 +270,10 @@
         private System.Windows.Forms.Label errorLabel;
         private System.Windows.Forms.Label caesarShiftLabel;
         private System.Windows.Forms.NumericUpDown caesarShift;
+        private System.Windows.Forms.TextBox ASCKeyTextBox;
+        private System.Windows.Forms.Label ASCLabel;
+        private System.Windows.Forms.Button ASCKeyRandomizerButton;
+        private System.Windows.Forms.Label ASCLetterCounter;
     }
 }
 

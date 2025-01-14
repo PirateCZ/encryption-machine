@@ -18,40 +18,47 @@ namespace Cipher_App
 
         private int caesarShift;
 
+        private string ascKey;
 
-        public void SetVariables(string encryptionType, string textToEncrypt, int shift)
+        public void SetVariables(string encryptionType, string textToEncrypt, int shift, string key)
         {
             this.encryptionType = encryptionType;
             this.textToEncrypt = textToEncrypt;
 
 
             caesarShift = shift;
+
+            ascKey = key;
         }
         public void Encrypt()
+        {
+            ChooseEncryption();
+            encryptor.Encrypt();
+        }
+
+        public void Decrypt()
+        {
+            ChooseEncryption();
+            encryptor.Decrypt();
+        
+        }
+        private void ChooseEncryption()
         {
             switch (encryptionType)
             {
                 case "Caesar Cipher":
                     Console.WriteLine("Caesar Encrypt");
                     encryptor = new Caesar(textToEncrypt, caesarShift);
-                    encryptor.Encrypt();
+                    break;
+                case "Monoalphabetic Substitution Cipher":
+                    Console.WriteLine("Monoalphabetic Substitution Cipher");
+                    encryptor = new AlphabetSubstion(textToEncrypt, ascKey);
+                    break;
+                case "Atbash Cipher":
+                    Console.WriteLine("Atbash Cipher");
+                    encryptor = new Atbash(textToEncrypt);
                     break;
 
-                default:
-                    Console.WriteLine("How do you keep doing it.");
-                    break;
-            }
-        }
-
-        public void Decrypt()
-        {
-            switch (encryptionType)
-            {
-                case "Caesar Cipher":
-                    Console.WriteLine("Caesar Decrypt");
-                    encryptor = new Caesar(textToEncrypt, caesarShift);
-                    encryptor.Decrypt();
-                    break;
 
                 default:
                     Console.WriteLine("How do you keep doing it.");

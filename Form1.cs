@@ -15,6 +15,8 @@ namespace Cipher_App
     public partial class EncryptMachineForm : Form
     {
         EncryptMachine machine = new EncryptMachine();
+        Random rnd = new Random();
+        List<char> onlyOneAppearanceList; //error handling
         public EncryptMachineForm()
         {
             InitializeComponent();
@@ -22,21 +24,48 @@ namespace Cipher_App
 
         private void startButton_Click(object sender, EventArgs e)
         {
-            // well first we have to asing variables 
-            //then we either encrypt or decrypt
-            //then we show ouptut very simple reasoning 
 
             if (encryptionTypeSelector.Text == "" || textToEncryptBox.Text == "")
             {
                 errorLabel.Text = "Select values";
                 errorLabel.Show();
-            } else errorLabel.Hide();
+                return;
+            }
+
+            //asc error handling
+            else if (encryptionTypeSelector.Text == "Monoalphabetic Substitution Cipher")
+            {
+                if (ASCKeyTextBox.TextLength < 26)
+                {
+                    errorLabel.Text = "Key is too short";
+                    errorLabel.Show();
+                    return;
+                }
+                onlyOneAppearanceList = new List<char>();
+                for(int i = 0; i < ASCKeyTextBox.TextLength; ++i)
+                {
+                    if (!onlyOneAppearanceList.Contains(ASCKeyTextBox.Text[i]))
+                    {
+                        onlyOneAppearanceList.Add(ASCKeyTextBox.Text[i]);
+                        errorLabel.Hide();
+                    }
+                    else
+                    {
+                        errorLabel.Text = $"You have multiple letters in your key({ASCKeyTextBox.Text[i]})";
+                        errorLabel.Show();
+                        return;
+                    }
+                }
+            }
+            else errorLabel.Hide();
+
 
             machine.SetVariables(
                 encryptionTypeSelector.Text, textToEncryptBox.Text,
 
-                (int)caesarShift.Value
+                (int)caesarShift.Value,
 
+                ASCKeyTextBox.Text
             );
 
             if (!decryptRadioButton.Checked) 
@@ -52,12 +81,52 @@ namespace Cipher_App
             caesarShift.Hide();
             caesarShiftLabel.Hide();
 
+            ASCLabel.Hide();
+            ASCLetterCounter.Hide();
+            ASCKeyTextBox.Hide();
+            ASCKeyRandomizerButton.Hide();
+
 
             if (encryptionTypeSelector.Text == "Caesar Cipher")
             {
                 caesarShift.Show();
                 caesarShiftLabel.Show();
             }
+
+            else if (encryptionTypeSelector.Text == "Monoalphabetic Substitution Cipher")
+            {
+                ASCLabel.Show();
+                ASCLetterCounter.Show();
+                ASCKeyTextBox.Show();
+                ASCKeyRandomizerButton.Show();
+            } 
+        }
+
+        private void ASCKeyRandomizerButton_Click(object sender, EventArgs e)
+        {
+
+            char[] charArray = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+
+            for (int i = 0; i < 100; i++){
+                int index1 = rnd.Next(0, charArray.Length);
+                int index2 = rnd.Next(0, charArray.Length);
+
+                (charArray[index1], charArray[index2]) = (charArray[index2], charArray[index1]);
+            }
+
+            ASCKeyTextBox.Text = new string(charArray);
+
+        }
+
+        private void ASCKeyTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (ASCKeyTextBox.TextLength > 26)
+            {
+                ASCKeyTextBox.Text = ASCKeyTextBox.Text.Substring(0, 26);
+            }
+            ASCLetterCounter.Text = $"{ASCKeyTextBox.TextLength}/26";
+            ASCKeyTextBox.Select(ASCKeyTextBox.TextLength, 0);
+            ASCKeyTextBox.ScrollToCaret();
         }
     }
 }
