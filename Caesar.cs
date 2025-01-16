@@ -26,7 +26,7 @@ namespace Cipher_App
 
             for(int i = 0; i < charArray.Length; i++)
             {                     
-                if (char.IsLetter(charArray[i]))
+                if (char.IsLetter(charArray[i])) // 97 + ( ( letter + shift ) - 97 ) % 26
                 {
                     for(int j = 0; j < shift; j++)
                     {

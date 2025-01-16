@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Permissions;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,9 @@ namespace Cipher_App
 
         private string ascKey;
 
-        public void SetVariables(string encryptionType, string textToEncrypt, int shift, string key)
+        private string vigenereKey;
+
+        public void SetVariables(string encryptionType, string textToEncrypt, int shift, string key, string vkey)
         {
             this.encryptionType = encryptionType;
             this.textToEncrypt = textToEncrypt;
@@ -29,6 +32,8 @@ namespace Cipher_App
             caesarShift = shift;
 
             ascKey = key;
+
+            vigenereKey = vkey;
         }
         public void Encrypt()
         {
@@ -58,7 +63,10 @@ namespace Cipher_App
                     Console.WriteLine("Atbash Cipher");
                     encryptor = new Atbash(textToEncrypt);
                     break;
-
+                case "Vigenère cipher":
+                    Console.WriteLine("Vigenère cipher");
+                    encryptor = new Vigenere(textToEncrypt, vigenereKey);
+                    break;
 
                 default:
                     Console.WriteLine("How do you keep doing it.");

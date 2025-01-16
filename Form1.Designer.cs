@@ -44,6 +44,8 @@
             this.ASCLabel = new System.Windows.Forms.Label();
             this.ASCKeyRandomizerButton = new System.Windows.Forms.Button();
             this.ASCLetterCounter = new System.Windows.Forms.Label();
+            this.vigenereKeyLabel = new System.Windows.Forms.Label();
+            this.vigenereKeyTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.caesarShift)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,8 +59,7 @@
             "Caesar Cipher",
             "Monoalphabetic Substitution Cipher",
             "Atbash Cipher",
-            "RSA",
-            "Enigma"});
+            "Vigenère cipher"});
             this.encryptionTypeSelector.Location = new System.Drawing.Point(340, 140);
             this.encryptionTypeSelector.MaximumSize = new System.Drawing.Size(120, 0);
             this.encryptionTypeSelector.Name = "encryptionTypeSelector";
@@ -184,7 +185,7 @@
             // 
             // ASCKeyTextBox
             // 
-            this.ASCKeyTextBox.Location = new System.Drawing.Point(518, 276);
+            this.ASCKeyTextBox.Location = new System.Drawing.Point(518, 275);
             this.ASCKeyTextBox.Name = "ASCKeyTextBox";
             this.ASCKeyTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ASCKeyTextBox.Size = new System.Drawing.Size(204, 23);
@@ -195,7 +196,7 @@
             // ASCLabel
             // 
             this.ASCLabel.AutoSize = true;
-            this.ASCLabel.Location = new System.Drawing.Point(518, 256);
+            this.ASCLabel.Location = new System.Drawing.Point(515, 255);
             this.ASCLabel.Name = "ASCLabel";
             this.ASCLabel.Size = new System.Drawing.Size(73, 17);
             this.ASCLabel.TabIndex = 13;
@@ -225,11 +226,31 @@
             this.ASCLetterCounter.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.ASCLetterCounter.Visible = false;
             // 
+            // vigenereKeyLabel
+            // 
+            this.vigenereKeyLabel.AutoSize = true;
+            this.vigenereKeyLabel.Location = new System.Drawing.Point(515, 306);
+            this.vigenereKeyLabel.Name = "vigenereKeyLabel";
+            this.vigenereKeyLabel.Size = new System.Drawing.Size(73, 17);
+            this.vigenereKeyLabel.TabIndex = 16;
+            this.vigenereKeyLabel.Text = "Select key";
+            this.vigenereKeyLabel.Visible = false;
+            // 
+            // vigenereKeyTextBox
+            // 
+            this.vigenereKeyTextBox.Location = new System.Drawing.Point(518, 326);
+            this.vigenereKeyTextBox.Name = "vigenereKeyTextBox";
+            this.vigenereKeyTextBox.Size = new System.Drawing.Size(204, 23);
+            this.vigenereKeyTextBox.TabIndex = 17;
+            this.vigenereKeyTextBox.Visible = false;
+            // 
             // EncryptMachineForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(782, 553);
+            this.Controls.Add(this.vigenereKeyTextBox);
+            this.Controls.Add(this.vigenereKeyLabel);
             this.Controls.Add(this.ASCLetterCounter);
             this.Controls.Add(this.ASCKeyRandomizerButton);
             this.Controls.Add(this.ASCLabel);
@@ -274,6 +295,8 @@
         private System.Windows.Forms.Label ASCLabel;
         private System.Windows.Forms.Button ASCKeyRandomizerButton;
         private System.Windows.Forms.Label ASCLetterCounter;
+        private System.Windows.Forms.Label vigenereKeyLabel;
+        private System.Windows.Forms.TextBox vigenereKeyTextBox;
     }
 }
 

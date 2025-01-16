@@ -57,6 +57,16 @@ namespace Cipher_App
                     }
                 }
             }
+            if (encryptionTypeSelector.Text == "Vigenère cipher")
+            {
+                if (vigenereKeyTextBox.TextLength < 2)
+                {
+                    errorLabel.Text = "Key must be longer than 2 characters";
+                    errorLabel.Show();
+                    return;
+                }
+                else errorLabel.Hide();
+                }
             else errorLabel.Hide();
 
 
@@ -65,7 +75,9 @@ namespace Cipher_App
 
                 (int)caesarShift.Value,
 
-                ASCKeyTextBox.Text
+                ASCKeyTextBox.Text,
+
+                vigenereKeyTextBox.Text
             );
 
             if (!decryptRadioButton.Checked) 
@@ -86,6 +98,8 @@ namespace Cipher_App
             ASCKeyTextBox.Hide();
             ASCKeyRandomizerButton.Hide();
 
+            vigenereKeyLabel.Hide();
+            vigenereKeyTextBox.Hide();
 
             if (encryptionTypeSelector.Text == "Caesar Cipher")
             {
@@ -99,7 +113,12 @@ namespace Cipher_App
                 ASCLetterCounter.Show();
                 ASCKeyTextBox.Show();
                 ASCKeyRandomizerButton.Show();
-            } 
+            }
+            else if (encryptionTypeSelector.Text == "Vigenère cipher")
+            {
+                vigenereKeyLabel.Show();
+                vigenereKeyTextBox.Show();
+            }
         }
 
         private void ASCKeyRandomizerButton_Click(object sender, EventArgs e)

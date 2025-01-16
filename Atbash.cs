@@ -17,12 +17,37 @@ namespace Cipher_App
 
         public override void Encrypt()
         {
-            throw new NotImplementedException();
+            Crypt();
         }
 
         public override void Decrypt()
         {
-            throw new NotImplementedException();
+            Crypt();
+        }
+
+        private void Crypt()
+        {
+            char[] charArray = new char[word.Length];
+            for (int i = 0; i < word.Length; i++)
+            {
+                if (char.IsLetter(word[i]))
+                {
+                    if (char.IsUpper(word[i]))
+                    {
+                        charArray[i] = (char)('Z' - (word[i] - 'A'));
+                    }
+                    else
+                    {
+                        charArray[i] = (char)('z' - (word[i] - 'a'));
+
+                    }
+                }
+                else
+                {
+                    charArray[i] = word[i];
+                }
+            }
+            encryptedWord = new string(charArray);
         }
     }
 }
